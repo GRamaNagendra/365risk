@@ -34,7 +34,7 @@ const Risks = () => {
       <ul className="industry-list">
         {industries.map((industry) => (
           <li key={industry.id}>
-            <Link to={`/industry/${industry.id}`}>
+            <Link to={`/365risk/industry/${industry.id}`}>
               {industry.name}
             </Link>
           </li>

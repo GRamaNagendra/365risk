@@ -24,7 +24,7 @@ const Userinterface = () => {
       <ul className="industry-list">
         {industries.map((industry) => (
           <li key={industry.id} className="industry-item">
-            <Link to={`/uindustry/${industry.id}`}>
+            <Link to={`/365risk/uindustry/${industry.id}`}>
               <h3>{industry.name}</h3>
             </Link>
             <p>{industry.description}</p>

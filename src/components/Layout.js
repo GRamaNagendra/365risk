@@ -28,7 +28,7 @@ function Layout() {
         <>
             <Navbar expand="lg" className="navbar-custom sticky-top">
                 <Container>
-                    <Navbar.Brand as={Link} to="/" className="navbar-brand-custom">
+                    <Navbar.Brand as={Link} to="/365risk/" className="navbar-brand-custom">
                         Risk's365
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav">
@@ -38,26 +38,26 @@ function Layout() {
                     </Navbar.Toggle>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className={isMobile ? 'ms-auto mb-2 mb-lg-0' : 'me-auto mb-2 mb-lg-0'}>
-                            <Nav.Link as={Link} className="nav-link-custom" to="/">
+                            <Nav.Link as={Link} className="nav-link-custom" to="/365risk/">
                                 <FontAwesomeIcon icon={faHome} /> Home
                             </Nav.Link>
-                            <Nav.Link as={Link} className="nav-link-custom" to="/uindustries">
+                            <Nav.Link as={Link} className="nav-link-custom" to="/365risk/uindustries">
                                 <FontAwesomeIcon icon={faIndustry} /> Industries
                             </Nav.Link>
                             <NavDropdown title={<span>More <FontAwesomeIcon icon={faEllipsisH} /></span>} id="basic-nav-dropdown" className="nav-link-custom">
-                                <NavDropdown.Item as={Link} to="/about">
+                                <NavDropdown.Item as={Link} to="/365risk/about">
                                     <FontAwesomeIcon icon={faInfoCircle} /> About Us
                                 </NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/add-risk">
+                                <NavDropdown.Item as={Link} to="/365risk/risks">
                                     <FontAwesomeIcon icon={faPlusCircle} /> Add Risk
                                 </NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                         <Nav className="ms-auto mb-2 mb-lg-0">
-                            <Nav.Link as={Link} to="/notifications" className="nav-link-custom">
+                            <Nav.Link as={Link} to="/365risk/notifications" className="nav-link-custom">
                                 <FontAwesomeIcon icon={faBell} /> Notifications
                             </Nav.Link>
-                            <Nav.Link as={Link} to="/admin" className="nav-link-custom">
+                            <Nav.Link as={Link} to="/365risk/admin" className="nav-link-custom">
                                 <FontAwesomeIcon icon={faUserCircle} /> Admin
                             </Nav.Link>
                         </Nav>

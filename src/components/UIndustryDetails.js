@@ -31,7 +31,7 @@ const IndustryDetails = () => {
       <ul>
         {industry.risks.map((risk) => (
           <li key={risk.id}>
-            <Link to={`/industry/${id}/risk/${risk.id}`}>{risk.riskName}</Link>
+            <Link to={`/365risk/industry/${id}/risk/${risk.id}`}>{risk.riskName}</Link>
           </li>
         ))}
       </ul>

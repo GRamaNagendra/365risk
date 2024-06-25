@@ -170,7 +170,7 @@ const IndustryDetails = () => {
         ))}
       </Row>
       <div className="text-center my-4">
-        <Link to={`/industry/${id}/addRisk`}>
+        <Link to={`/365risk/industry/${id}/addRisk`}>
           <Button variant="success">Add New Risk</Button>
         </Link>
       </div>
