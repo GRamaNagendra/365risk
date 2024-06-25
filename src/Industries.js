@@ -124,7 +124,7 @@ const Industries = () => {
             <ul className="industry-list">
                 {filteredIndustries.map((industry) => (
                     <div key={industry.id} className="industry-item">
-                        <Link to={`/365risk/industries/${industry.id}`}>
+                        <Link to={`/industries/${industry.id}`}>
                             <span>{industry.name}</span>
                         </Link>
                         {industry.imagePath && (

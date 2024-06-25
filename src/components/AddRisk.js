@@ -23,7 +23,7 @@ const AddRisk = () => {
       setControl('');
       setMitigation('');
       // Redirect to industry details page after adding risk
-      navigate(`//365risk/industry/${id}`);
+      navigate(`/industry/${id}`);
     } catch (error) {
       console.error('Error adding risk:', error);
     }
