@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './components/Home';
 import IndustryDetails from './components/IndustryDetails';
@@ -18,12 +18,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/365risk/*" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="Uindustries" element={<Userinterface />} />
+          <Route path="uindustries" element={<Userinterface />} />
           <Route path="industries" element={<App2 />} />
           <Route path="risks" element={<Risks />} />
-          <Route path="Admin" element={<Admin />} />
+          <Route path="admin" element={<Admin />} />
           <Route path="industry/:id" element={<IndustryDetails />} />
           <Route path="uindustry/:id" element={<UIndustryDetails />} />
           <Route path="industry/:id/risk/:riskId" element={<RiskDetails />} />
@@ -31,7 +31,7 @@ function App() {
           <Route path="add-risk" element={<AddRisk />} />
           <Route path="addindustry" element={<AddIndustry />} />
           <Route path="about" element={<AboutUs />} />
-          <Route path="Notifications" element={<Notifications />} />
+          <Route path="notifications" element={<Notifications />} />
         </Route>
       </Routes>
     </Router>
