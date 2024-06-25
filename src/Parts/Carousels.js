@@ -2,6 +2,7 @@ import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import sampleImage1 from '../images/risk2.jpeg'; // Example image 1
 import sampleImage2 from '../images/risk3.webp'; // Example image 2
+import sampleImage3 from '../images/risk1.avif'
 import '../App.css';
 
 function Carousels1() {
@@ -21,7 +22,7 @@ function Carousels1() {
       <Carousel.Item>
         <img
           className="d-block mx-auto carousel-image"
-          src="#" // Replace with correct image source
+          src={sampleImage2} // Replace with correct image source
           alt="Second slide"
         />
         <Carousel.Caption className="carousel-caption">
@@ -32,7 +33,7 @@ function Carousels1() {
       <Carousel.Item>
         <img
           className="d-block mx-auto carousel-image"
-          src={sampleImage2}
+          src={sampleImage3}
           alt="Third slide"
         />
         <Carousel.Caption className="carousel-caption">

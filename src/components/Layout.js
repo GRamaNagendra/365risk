@@ -33,7 +33,7 @@ function Layout() {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav">
                         <span className="navbar-toggler-icon">
-                            <FontAwesomeIcon icon={faBars} /> {/* Changed to faBars icon */}
+                           
                         </span>
                     </Navbar.Toggle>
                     <Navbar.Collapse id="basic-navbar-nav">

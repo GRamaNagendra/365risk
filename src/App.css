@@ -75,115 +75,153 @@ a:hover {
 /* layout */
 
 /* Layout.css */
+/* Layout.css */
 
 .navbar-custom {
   background-color: #007bff; /* Navbar background color */
+  padding: 10px 20px; /* Padding around navbar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
 }
 
 .navbar-brand-custom {
   color: #ffffff; /* Navbar brand (logo) color */
   font-weight: bold; /* Optional: Adjust font weight */
+  font-size: 1.5rem; /* Optional: Adjust font size */
+  margin-right: 30px; /* Optional: Adjust spacing from the right */
+}
+
+.navbar-nav {
+  margin-left: auto; /* Push menu items to the right */
 }
 
 .nav-link-custom {
   color: #ffffff !important; /* Navbar link text color */
   font-weight: bold; /* Optional: Adjust font weight */
-  margin-right: 10px; /* Optional: Adjust spacing between links */
+  margin-right: 20px; /* Optional: Adjust spacing between links */
+  transition: color 0.3s; /* Smooth transition for color change */
 }
 
 .nav-link-custom:hover {
-  color: #ffffff; /* Navbar link text color on hover */
+  color: #f8f9fa; /* Navbar link text color on hover */
   text-decoration: none; /* Optional: Remove underline on hover */
 }
 
-.navbar-toggler-icon {
-  border: none; /* Remove border from toggle icon */
+.navbar-toggler {
+  border: none; /* Remove border from toggle button */
   background-color: transparent; /* Set background color to transparent */
-  cursor: pointer; /* Change cursor to pointer */
   outline: none; /* Remove outline */
-  padding: 0; /* Remove padding */
-  margin: 0; /* Remove margin */
-  width: 30px; /* Adjust width of icon */
-  height: 30px; /* Adjust height of icon */
-  display: flex; /* Use flexbox for icon */
-  flex-direction: column; /* Arrange items in column */
-  justify-content: space-around; /* Space items evenly */
 }
 
-.navbar-toggler-icon .svg-inline--fa {
-  color: #ffffff; /* Color of faBars icon */
-  font-size: 20px; /* Adjust font size of faBars icon */
-}
-
-.navbar-toggler-icon .svg-inline--fa:hover {
-  color: #f8f9fa; /* Adjust hover color of faBars icon */
+.navbar-toggler-icon {
+  color: #ffffff; /* Color of toggle icon */
+  font-size: 24px; /* Adjust font size */
 }
 
 .dropdown-toggle {
   color: #ffffff !important; /* Color of dropdown toggle text */
   font-weight: bold; /* Optional: Adjust font weight */
+  margin-left: 10px; /* Optional: Adjust spacing */
 }
 
 .dropdown-toggle::after {
-  display: none; /* Hide dropdown caret */
+  display: none; /* Hide default caret */
 }
 
 .dropdown-toggle .svg-inline--fa {
   margin-left: 5px; /* Adjust spacing between icon and text */
-  color: #ffffff; /* Color of faEllipsisH icon */
+  color: #ffffff; /* Color of dropdown icon */
+}
+
+.dropdown-menu {
+  background-color: #007bff; /* Dropdown menu background color */
+}
+
+.dropdown-item {
+  color: #ffffff !important; /* Dropdown item text color */
+  font-weight: bold; /* Optional: Adjust font weight */
+}
+
+.dropdown-item:hover {
+  background-color: #0056b3; /* Darker background on hover */
 }
 
 
-/* App.css or custom-carousel.css */
+
+
+
+
+
+
 
 .custom-carousel {
-  background-color: #000; /* Dark background color */
-  height: 500px; /* Example height */
+  background: linear-gradient(45deg, #ff5f6d, #ffc371);
+  height: 500px;
+  position: relative;
+  overflow: hidden;
 }
 
 .carousel-image {
-  max-width: 100%; /* Ensure image does not stretch beyond its original size */
-  height: 500px; /* Set a fixed height or adjust as needed */
-  object-fit: contain; /* Maintain aspect ratio without cropping */
+  max-width: 100%;
+  height: 500px;
+  object-fit: cover;
 }
 
 .carousel-caption {
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  color: #fff; /* White text color */
-  padding: 20px; /* Padding around captions */
-  text-align: center; /* Center align text */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff; /* White font color for better contrast */
+  padding: 20px;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .carousel-caption h5 {
-  font-size: 1.5rem; /* Larger font size for slide titles */
-  font-weight: bold; /* Bold font weight for emphasis */
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff; /* White font color */
 }
 
 .carousel-caption p {
-  font-size: 1rem; /* Smaller font size for slide descriptions */
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  color: #ccc; /* Light gray font color */
 }
 
 .carousel-control-prev, .carousel-control-next {
-  background-color: rgba(255, 255, 255, 0.5); /* Light background color for control buttons */
-  border-radius: 50%; /* Rounded shape */
-  width: 40px; /* Adjust width as needed */
-  height: 40px; /* Adjust height as needed */
-  top: 50%; /* Position buttons vertically in the middle */
-  transform: translateY(-50%); /* Adjust position */
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.3s ease;
+  font-size: 1.2rem;
+  line-height: 50px;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
-  background-color: #343a40; /* Dark color for the control icon */
-  border-radius: 50%; /* Rounded shape */
-  width: 20px; /* Adjust width as needed */
-  height: 20px; /* Adjust height as needed */
+  background-color: #343a40;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .carousel-control-prev-icon::before, .carousel-control-next-icon::before {
-  content: ''; /* Required for pseudo-elements */
+  content: '';
   display: inline-block;
-  border-top: 2px solid #fff; /* Adjust thickness and color of the icon */
-  border-left: 2px solid #fff; /* Adjust thickness and color of the icon */
-  transform: rotate(-45deg); /* Rotate the arrow icon */
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  transform: rotate(-45deg);
 }
 
