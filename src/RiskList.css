@@ -1,0 +1,27 @@
+.risk-container {
+    margin-top: 20px;
+}
+
+.add-risk-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.risk-list {
+    list-style: none;
+    padding: 0;
+}
+
+.risk-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.risk-item h3 {
+    margin: 0;
+}

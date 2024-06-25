@@ -1,5 +1,12 @@
-const Aboutus = () => {
-  return <h1>Aboutus</h1>;
+import React from 'react';
+
+const AboutUs = () => {
+  return (
+    <div>
+      <h2>About Us</h2>
+      <p>Information about us...</p>
+    </div>
+  );
 };
 
-export default Aboutus;
+export default AboutUs;

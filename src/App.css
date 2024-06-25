@@ -1,20 +1,189 @@
-.ciwh{
-margin: auto;
-  width:50%;
-  height:500px;
+/* App.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-  margin: auto;
-  width: 18%; /* Adjust the width as needed */
-  height: 100%; /* Adjust the height as needed */
-  background-color: #8cbbed; 
-  border-radius: 25px; 
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
+ul {
+  list-style-type: none;
+  padding: 0;
 }
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-  background-color: #007bff; 
-  
+
+ul li {
+  margin-bottom: 10px;
 }
+
+.search-bar
+{
+  width: 100%;
+  height: 50px !important
+}
+input[type="text"], textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  vertical-align: top;
+  white-space: normal; /* Ensure text wraps to the next line */
+}
+
+
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+a:hover {
+  text-decoration: underline;
+}.navbar-custom {
+  background-color: #007bff; /* Primary color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+/* layout */
+
+/* Layout.css */
+
+.navbar-custom {
+  background-color: #007bff; /* Navbar background color */
+}
+
+.navbar-brand-custom {
+  color: #ffffff; /* Navbar brand (logo) color */
+  font-weight: bold; /* Optional: Adjust font weight */
+}
+
+.nav-link-custom {
+  color: #ffffff !important; /* Navbar link text color */
+  font-weight: bold; /* Optional: Adjust font weight */
+  margin-right: 10px; /* Optional: Adjust spacing between links */
+}
+
+.nav-link-custom:hover {
+  color: #ffffff; /* Navbar link text color on hover */
+  text-decoration: none; /* Optional: Remove underline on hover */
+}
+
+.navbar-toggler-icon {
+  border: none; /* Remove border from toggle icon */
+  background-color: transparent; /* Set background color to transparent */
+  cursor: pointer; /* Change cursor to pointer */
+  outline: none; /* Remove outline */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+  width: 30px; /* Adjust width of icon */
+  height: 30px; /* Adjust height of icon */
+  display: flex; /* Use flexbox for icon */
+  flex-direction: column; /* Arrange items in column */
+  justify-content: space-around; /* Space items evenly */
+}
+
+.navbar-toggler-icon .svg-inline--fa {
+  color: #ffffff; /* Color of faBars icon */
+  font-size: 20px; /* Adjust font size of faBars icon */
+}
+
+.navbar-toggler-icon .svg-inline--fa:hover {
+  color: #f8f9fa; /* Adjust hover color of faBars icon */
+}
+
+.dropdown-toggle {
+  color: #ffffff !important; /* Color of dropdown toggle text */
+  font-weight: bold; /* Optional: Adjust font weight */
+}
+
+.dropdown-toggle::after {
+  display: none; /* Hide dropdown caret */
+}
+
+.dropdown-toggle .svg-inline--fa {
+  margin-left: 5px; /* Adjust spacing between icon and text */
+  color: #ffffff; /* Color of faEllipsisH icon */
+}
+
+
+/* App.css or custom-carousel.css */
+
+.custom-carousel {
+  background-color: #000; /* Dark background color */
+  height: 500px; /* Example height */
+}
+
+.carousel-image {
+  max-width: 100%; /* Ensure image does not stretch beyond its original size */
+  height: 500px; /* Set a fixed height or adjust as needed */
+  object-fit: contain; /* Maintain aspect ratio without cropping */
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: #fff; /* White text color */
+  padding: 20px; /* Padding around captions */
+  text-align: center; /* Center align text */
+}
+
+.carousel-caption h5 {
+  font-size: 1.5rem; /* Larger font size for slide titles */
+  font-weight: bold; /* Bold font weight for emphasis */
+}
+
+.carousel-caption p {
+  font-size: 1rem; /* Smaller font size for slide descriptions */
+}
+
+.carousel-control-prev, .carousel-control-next {
+  background-color: rgba(255, 255, 255, 0.5); /* Light background color for control buttons */
+  border-radius: 50%; /* Rounded shape */
+  width: 40px; /* Adjust width as needed */
+  height: 40px; /* Adjust height as needed */
+  top: 50%; /* Position buttons vertically in the middle */
+  transform: translateY(-50%); /* Adjust position */
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-color: #343a40; /* Dark color for the control icon */
+  border-radius: 50%; /* Rounded shape */
+  width: 20px; /* Adjust width as needed */
+  height: 20px; /* Adjust height as needed */
+}
+
+.carousel-control-prev-icon::before, .carousel-control-next-icon::before {
+  content: ''; /* Required for pseudo-elements */
+  display: inline-block;
+  border-top: 2px solid #fff; /* Adjust thickness and color of the icon */
+  border-left: 2px solid #fff; /* Adjust thickness and color of the icon */
+  transform: rotate(-45deg); /* Rotate the arrow icon */
+}
+
