@@ -4,6 +4,7 @@ import axios from 'axios';
 import App2 from '../JsonDataDisplay2';
 import Carousels1 from '../Parts/Carousels';
 import '../App.css'
+import api from '../api';
 
 
 const Admin = () => {
@@ -15,7 +16,7 @@ const Admin = () => {
 
   const fetchIndustries = async () => {
     try {
-      const response = await axios.get('/api/industries');
+      const response = await api.get('/api/industries');
       setIndustries(response.data);
     } catch (error) {
       console.error('Error fetching industries:', error);

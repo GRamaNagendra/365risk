@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import api from '../api';
 
 const IndustryDetails = () => {
   const { id } = useParams();
@@ -22,7 +23,7 @@ const IndustryDetails = () => {
 
   const fetchIndustry = async () => {
     try {
-      const response = await axios.get(`/api/industries/${id}`);
+      const response = await api.get(`/api/industries/${id}`);
       setIndustry(response.data);
     } catch (error) {
       console.error('Error fetching industry:', error);
@@ -31,7 +32,7 @@ const IndustryDetails = () => {
 
   const deleteRisk = async (riskId) => {
     try {
-      await axios.delete(`/api/industries/${id}/risks/${riskId}`);
+      await api.delete(`/api/industries/${id}/risks/${riskId}`);
       fetchIndustry();
     } catch (error) {
       console.error('Error deleting risk:', error);
@@ -40,7 +41,7 @@ const IndustryDetails = () => {
 
   const updateRisk = async () => {
     try {
-      await axios.put(`/api/industries/${id}/risks/${updatedRisk.id}`, updatedRisk);
+      await api.put(`/api/industries/${id}/risks/${updatedRisk.id}`, updatedRisk);
       fetchIndustry();
       setUpdatedRisk({
         id: '',

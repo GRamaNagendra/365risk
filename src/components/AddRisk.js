@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
 import axios from 'axios';
+import api from '../api';
 
 const AddRisk = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const AddRisk = () => {
     const riskData = { riskName,description, identification, control, mitigation };
 
     try {
-      await axios.post(`/api/industries/${id}/risks`, riskData);
+      await api.post(`/api/industries/${id}/risks`, riskData);
       SetRiskName('')
       setDescription('');
       setIdentification('');

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import api from '../api';
 
 const AddIndustry = () => {
   const [name, setName] = useState('');
@@ -12,7 +13,7 @@ const AddIndustry = () => {
     const industryData = { name, description };
 
     try {
-      await axios.post('/api/industries', industryData);
+      await api.post('/api/industries', industryData);
       setName('');
       setDescription('');
       navigate('/'); // Navigate to the home page after successful addition

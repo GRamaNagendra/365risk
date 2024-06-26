@@ -15,7 +15,7 @@ const Risks = () => {
 
   const fetchIndustries = async () => {
     try {
-      const response = await axios.get('/api/industries');
+      const response = await api.get('/api/industries');
       setIndustries(response.data);
     } catch (error) {
       console.error('Error fetching industries:', error);

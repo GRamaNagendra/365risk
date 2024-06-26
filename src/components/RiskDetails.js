@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useHistory } from 'react-router-dom';
+import api from '../api';
 
 const RiskDetails = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const RiskDetails = () => {
 
   const fetchRisk = async () => {
     try {
-      const response = await axios.get(`/api/risks/${id}`);
+      const response = await api.get(`/api/risks/${id}`);
       setRisk(response.data);
     } catch (error) {
       console.error('Error fetching risk:', error);
@@ -26,7 +27,7 @@ const RiskDetails = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/api/risks/${id}`);
+      await api.delete(`/api/risks/${id}`);
       history.push('/'); // Redirect to the home page or another appropriate route after deletion
     } catch (error) {
       console.error('Error deleting risk:', error);

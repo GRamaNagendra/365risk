@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import api from '../api';
 
 const IndustryDetails = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const IndustryDetails = () => {
 
   const fetchIndustry = async () => {
     try {
-      const response = await axios.get(`/api/industries/${id}`);
+      const response = await api.get(`/api/industries/${id}`);
       setIndustry(response.data);
     } catch (error) {
       console.error('Error fetching industry:', error);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App2.css';
+import api from './api';
 
 const App2 = () => {
   const [industries, setIndustries] = useState([]);
@@ -16,7 +17,7 @@ const App2 = () => {
 
   const fetchIndustries = async () => {
     try {
-      const response = await axios.get('/api/industries');
+      const response = await api.get('/api/industries');
       setIndustries(response.data);
     } catch (error) {
       console.error('Error fetching industries:', error);
@@ -32,7 +33,7 @@ const App2 = () => {
     }
 
     try {
-      const response = await axios.post('/api/industries', formData, {
+      const response = await api.post('/api/industries', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -49,7 +50,7 @@ const App2 = () => {
 
   const deleteIndustry = async (id) => {
     try {
-      await axios.delete(`/api/industries/${id}`);
+      await api.delete(`/api/industries/${id}`);
       setIndustries(industries.filter((industry) => industry.id !== id));
     } catch (error) {
       console.error('Error deleting industry:', error);
@@ -72,7 +73,7 @@ const App2 = () => {
     }
 
     try {
-      await axios.put(`/api/industries/${editingIndustry.id}`, formData, {
+      await api.put(`/api/industries/${editingIndustry.id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

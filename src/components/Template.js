@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import api from '../api';
 
 const RiskDetails = () => {
   const { id, riskId } = useParams();
@@ -12,7 +13,7 @@ const RiskDetails = () => {
 
   const fetchRisk = async () => {
     try {
-      const response = await axios.get(`/api/industries/${id}/risks/${riskId}`);
+      const response = await api.get(`/api/industries/${id}/risks/${riskId}`);
       setRisk(response.data);
     } catch (error) {
       console.error('Error fetching risk:', error);
