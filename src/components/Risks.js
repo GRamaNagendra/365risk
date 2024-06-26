@@ -4,6 +4,7 @@ import axios from 'axios';
 import App2 from '../JsonDataDisplay2';
 import Carousels1 from '../Parts/Carousels';
 import '../App.css'
+import api from '../api';
 
 
 const Risks = () => {
