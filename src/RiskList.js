@@ -1,46 +1,53 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import './RiskList.css';
 
-const RiskList = () => {
-    const { industryId } = useParams();
-    const [industry, setIndustry] = useState(null);
+const RiskDetails = () => {
+  const { id, riskId } = useParams();
+  const [risk, setRisk] = useState(null);
 
-    useEffect(() => {
-        const fetchIndustry = async () => {
-            try {
-                const response = await axios.get(`/api/industries/${industryId}`);
-                setIndustry(response.data);
-            } catch (error) {
-                console.error('Error fetching industry:', error);
-            }
-        };
+  useEffect(() => {
+    fetchRisk();
+  }, []);
 
-        fetchIndustry();
-    }, [industryId]);
-
-    if (!industry) {
-        return <h2>Industry not found</h2>;
+  const fetchRisk = async () => {
+    try {
+      const response = await axios.get(`/api/industries/${id}/risks/${riskId}`);
+      setRisk(response.data);
+    } catch (error) {
+      console.error('Error fetching risk:', error);
     }
+  };
 
-    return (
-        <div className="risk-container">
-            <h2>{industry.name} - Risks</h2>
-            <Link to={`/add-risk/${industry.id}`} className="add-risk-button">Add Risk</Link>
-            <ul className="risk-list">
-                {industry.risks.map((risk) => (
-                    <li key={risk.id} className="risk-item">
-                        <h3>{risk.name}</h3>
-                        <p><strong>Description:</strong> {risk.description}</p>
-                        <p><strong>Identification:</strong> {risk.identification}</p>
-                        <p><strong>Control:</strong> {risk.control}</p>
-                        <p><strong>Mitigation:</strong> {risk.mitigation}</p>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+  if (!risk) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div style={{ margin: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '4px', backgroundColor: '#f9f9f9' }}>
+      <h1>{risk.riskName}</h1>
+
+      <div style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ddd', borderRadius: '4px', backgroundColor: '#fff' }}>
+        <h2 style={{ marginTop: '0' }}>Description</h2>
+        <p>{risk.description}</p>
+      </div>
+
+      <div style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ddd', borderRadius: '4px', backgroundColor: '#fff' }}>
+        <h2 style={{ marginTop: '0' }}>Identification</h2>
+        <p>{risk.identification}</p>
+      </div>
+
+      <div style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ddd', borderRadius: '4px', backgroundColor: '#fff' }}>
+        <h2 style={{ marginTop: '0' }}>Control</h2>
+        <p>{risk.control}</p>
+      </div>
+
+      <div style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ddd', borderRadius: '4px', backgroundColor: '#fff' }}>
+        <h2 style={{ marginTop: '0' }}>Mitigation</h2>
+        <p>{risk.mitigation}</p>
+      </div>
+    </div>
+  );
 };
 
-export default RiskList;
+export default RiskDetails;

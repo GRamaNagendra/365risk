@@ -2,7 +2,8 @@
   "name": "365risk",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://GRamaNagendra.github.io/365risk",
+  "homepage": "https://gramanagendra.github.io",
+  "proxy": "http://localhost:8080/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
@@ -17,7 +18,7 @@
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.24.0",
+    "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
