@@ -2,7 +2,7 @@
   "name": "365risk",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gramanagendra.github.io",
+  "homepage": "https://gramanagendra.github.io/365risk",
   
 
   "dependencies": {
@@ -34,7 +34,7 @@
     "start-dev": "concurrently \"npm start\" \"npm run start-backend\""
   },
 
-  "proxy": "https://expert-umbrella-5wj44gvrx663vvpp-8080.app.github.dev/api",
+  "proxy": "https://symmetrical-carnival-wwp99rv5vvq2g5jr-8080.app.github.dev/api",
   "eslintConfig": {
     "extends": [
       "react-app",
