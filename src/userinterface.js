@@ -30,7 +30,7 @@ const Userinterface = () => {
             </Link>
             <p>{industry.description}</p>
             <img
-                    src={`https://raw.githubusercontent.com/GRamaNagendra/EnterValues/main/src/main/resources/${industry.imagePath}`} 
+                    src={`https://fantastic-halibut-6jqrr9v54q7f4jww-8080.app.github.dev/${industry.imagePath}`} 
                 alt={industry.name}
                 className="industry-image"
               />
