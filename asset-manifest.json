@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/365risk/static/css/main.95a2578c.css",
-    "main.js": "/365risk/static/js/main.fb7e4ee0.js",
+    "main.js": "/365risk/static/js/main.98151c73.js",
     "static/js/453.4a2e6b55.chunk.js": "/365risk/static/js/453.4a2e6b55.chunk.js",
     "static/media/risk2.jpeg": "/365risk/static/media/risk2.18285ac12e7a5cb6f87b.jpeg",
     "static/media/risk3.webp": "/365risk/static/media/risk3.149fa72473324914e7f9.webp",
     "static/media/risk1.avif": "/365risk/static/media/risk1.62d008cc4bc6a6188f06.avif",
     "index.html": "/365risk/index.html",
     "main.95a2578c.css.map": "/365risk/static/css/main.95a2578c.css.map",
-    "main.fb7e4ee0.js.map": "/365risk/static/js/main.fb7e4ee0.js.map",
+    "main.98151c73.js.map": "/365risk/static/js/main.98151c73.js.map",
     "453.4a2e6b55.chunk.js.map": "/365risk/static/js/453.4a2e6b55.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.95a2578c.css",
-    "static/js/main.fb7e4ee0.js"
+    "static/js/main.98151c73.js"
   ]
 }
