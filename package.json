@@ -33,7 +33,7 @@
     "start-backend": "cd /d C:\\Users\\raman\\OneDrive\\Desktop\\demo\\demo && cmd /C .\\mvnw spring-boot:run",
     "start-dev": "concurrently \"npm start\" \"npm run start-backend\""
   },
-  "proxy": "http://localhost:8080",
+  "proxy": "https://fantastic-halibut-6jqrr9v54q7f4jww-8080.app.github.dev/api/industries",
   "eslintConfig": {
     "extends": [
       "react-app",
