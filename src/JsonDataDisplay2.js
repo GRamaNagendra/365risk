@@ -146,7 +146,7 @@ const App2 = () => {
             <span>{industry.description}</span><br/>
             {industry.imagePath && (
               <img
-                src={`${process.env.PUBLIC_URL}/${industry.imagePath}`}
+                src={`https://raw.githubusercontent.com/GRamaNagendra/EnterValues/main/src/main/resources/${industry.imagePath}`}
                 alt={industry.name}
                 className="industry-image"
               />
