@@ -64,41 +64,41 @@ a {
 
 a:hover {
   text-decoration: underline;
-}.navbar-custom {
-  background-color: #007bff; /* Primary color */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
-
-
-/* layout */
-
-/* Layout.css */
 /* Layout.css */
 
 .navbar-custom {
   background-color: #007bff; /* Navbar background color */
-  padding: 10px 20px; /* Padding around navbar */
+ 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+ 
 }
+
 
 .navbar-brand-custom {
   color: #ffffff; /* Navbar brand (logo) color */
   font-weight: bold; /* Optional: Adjust font weight */
   font-size: 1.5rem; /* Optional: Adjust font size */
-  margin-right: 30px; /* Optional: Adjust spacing from the right */
+  margin-right: 10px; /* Optional: Adjust spacing from the right */
+
 }
 
 .navbar-nav {
   margin-left: auto; /* Push menu items to the right */
+ 
 }
 
 .nav-link-custom {
   color: #ffffff !important; /* Navbar link text color */
   font-weight: bold; /* Optional: Adjust font weight */
-  margin-right: 20px; /* Optional: Adjust spacing between links */
+  font-size: 19px;
   transition: color 0.3s; /* Smooth transition for color change */
+ 
+  width:max-content;
+  padding-right: 15px;
+ 
+ 
 }
 
 .nav-link-custom:hover {
@@ -144,7 +144,6 @@ a:hover {
 .dropdown-item:hover {
   background-color: #0056b3; /* Darker background on hover */
 }
-
 
 
 

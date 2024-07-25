@@ -21,7 +21,7 @@ const Userinterface = () => {
 
   return (
     <div className="container">
-      <h1>Industries</h1>
+      <h1>Industries2</h1>
       <ul className="industry-list">
         {industries.map((industry) => (
           <li key={industry.id} className="industry-item">
@@ -30,7 +30,7 @@ const Userinterface = () => {
             </Link>
             <p>{industry.description}</p>
             <img
-                src={`${process.env.PUBLIC_URL}/${industry.imagePath}`}
+                    src={`http://localhost:8080/${industry.imagePath}`} 
                 alt={industry.name}
                 className="industry-image"
               />

@@ -1,21 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import JoditEditor from 'jodit-react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import api from '../api';
 
 const IndustryDetails = () => {
   const { id } = useParams();
   const [industry, setIndustry] = useState(null);
-  const [updatedRisk, setUpdatedRisk] = useState({
-    id: '',
-    riskName: '',
-    description: '',
-    identification: '',
-    control: '',
-    mitigation: ''
-  });
-  const [selectedRiskId, setSelectedRiskId] = useState('');
+  const [riskName, setRiskName] = useState('');
+  const [riskDetails, setRiskDetails] = useState('');
+  const [riskImage, setRiskImage] = useState(null);
+  const [editingRisk, setEditingRisk] = useState(null);
+  const navigate = useNavigate();
+  const editor = useRef(null);
 
   useEffect(() => {
     fetchIndustry();
@@ -39,46 +36,57 @@ const IndustryDetails = () => {
     }
   };
 
-  const updateRisk = async () => {
+  const handleUpdateClick = (risk) => {
+    setEditingRisk(risk.id);
+    setRiskName(risk.riskName);
+    setRiskDetails(risk.riskDetails);
+  };
+
+  const handleCancelUpdate = () => {
+    setEditingRisk(null);
+    setRiskName('');
+    setRiskDetails('');
+    setRiskImage(null);
+  };
+
+  const handleRiskUpdate = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('riskName', riskName);
+    formData.append('riskDetails', riskDetails);
+    if (riskImage) {
+      formData.append('riskImage', riskImage);
+    }
+
     try {
-      await api.put(`/api/industries/${id}/risks/${updatedRisk.id}`, updatedRisk);
-      fetchIndustry();
-      setUpdatedRisk({
-        id: '',
-        riskName: '',
-        description: '',
-        identification: '',
-        control: '',
-        mitigation: ''
+      await api.put(`/api/industries/${id}/risks/${editingRisk}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
-      setSelectedRiskId(''); // Reset selected risk ID
+      setEditingRisk(null);
+      setRiskName('');
+      setRiskDetails('');
+      setRiskImage(null);
+      fetchIndustry();
     } catch (error) {
       console.error('Error updating risk:', error);
     }
   };
 
-  const handleUpdateClick = (risk) => {
-    setSelectedRiskId(risk.id);
-    setUpdatedRisk({
-      id: risk.id,
-      riskName: risk.riskName,
-      description: risk.description,
-      identification: risk.identification,
-      control: risk.control,
-      mitigation: risk.mitigation
-    });
-  };
-
-  const handleCancelUpdate = () => {
-    setSelectedRiskId('');
-    setUpdatedRisk({
-      id: '',
-      riskName: '',
-      description: '',
-      identification: '',
-      control: '',
-      mitigation: ''
-    });
+  const config = {
+    readonly: false,
+    height: 400,
+    toolbar: [
+      'bold', 'italic', 'underline', 'strikethrough', '|',
+      'superscript', 'subscript', '|',
+      'ul', 'ol', 'outdent', 'indent', '|',
+      'font', 'fontsize', 'brush', '|',
+      'image', 'video', 'link', '|',
+      'align', 'undo', 'redo', '|',
+      'hr', 'eraser', 'copyformat', '|',
+      'symbol', 'fullsize', 'print', 'about'
+    ]
   };
 
   if (!industry) {
@@ -88,88 +96,62 @@ const IndustryDetails = () => {
   return (
     <Container>
       <h1 className="text-center my-4">{industry.name}</h1>
-      <p className="text-center">{industry.description}</p>
+      <div dangerouslySetInnerHTML={{ __html: industry.descriptionHtml }} />
       <h2 className="my-4">Risks</h2>
       <Row>
         {industry.risks.map((risk) => (
           <Col xs={12} md={12} lg={12} key={risk.id} className="mb-4">
-            <div className="p-3 border rounded" >
-            
-            <div style={{ marginBottom: '10px', fontSize: '16px' }}>
+            <div className="p-3 border rounded">
+              <div style={{ marginBottom: '10px', fontSize: '16px' }}>
                 <strong>Risk Name:</strong> {risk.riskName}
               </div>
               <div style={{ marginBottom: '10px', fontSize: '16px' }}>
-                <strong>Description:</strong> {risk.description}
+                <strong>Risk Details:</strong> {risk.riskDetails}
               </div>
-              <div style={{ marginBottom: '10px', fontSize: '16px' }}>
-                <strong>Identification:</strong> {risk.identification}
-              </div>
-              <div style={{ marginBottom: '10px', fontSize: '16px' }}>
-                <strong>Control:</strong> {risk.control}
-              </div>
-              <div style={{ marginBottom: '10px', fontSize: '16px' }}>
-                <strong>Mitigation:</strong> {risk.mitigation}
-              </div>
-              <Button variant="danger" onClick={() => deleteRisk(risk.id)}>Delete</Button>
-              {selectedRiskId === risk.id ? (
-                <>
-                  <div className="mt-3">
-                    <h4>Update Risk</h4>
-                    <div>
-                      <label>Risk Name</label>
-                      <input
-                        type="text"
-                        placeholder="Risk Name"
-                        value={updatedRisk.riskName}
-                        onChange={(e) => setUpdatedRisk({ ...updatedRisk, riskName: e.target.value })}
-                      />
-                    </div>
-                    <div>
-                      <label>Description</label>
-                      <textarea
-                        placeholder="Description"
-                        value={updatedRisk.description}
-                        onChange={(e) => setUpdatedRisk({ ...updatedRisk, description: e.target.value })}
-                      />
-                    </div>
-                    <div>
-                      <label>Identification</label>
-                      <textarea
-                        type="text"
-                        placeholder="Identification"
-                        value={updatedRisk.identification}
-                        onChange={(e) => setUpdatedRisk({ ...updatedRisk, identification: e.target.value })}
-                      />
-                    </div>
-                    <div>
-                      <label>Control</label>
-                      <textarea
-                        type="text"
-                        placeholder="Control"
-                        value={updatedRisk.control}
-                        onChange={(e) => setUpdatedRisk({ ...updatedRisk, control: e.target.value })}
-                      />
-                    </div>
-                    <div>
-                      <label>Mitigation</label>
-                      <textarea
-                        type="text"
-                        placeholder="Mitigation"
-                        value={updatedRisk.mitigation}
-                        onChange={(e) => setUpdatedRisk({ ...updatedRisk, mitigation: e.target.value })}
-                      />
-                    </div>
-                  </div>
-                  <Button variant="success" onClick={updateRisk} className="ml-2">Update</Button>
-                  <Button variant="secondary" onClick={handleCancelUpdate} className="ml-2">Cancel</Button>
-                </>
-              ) : (
-                <Button variant="primary" onClick={() => handleUpdateClick(risk)} className="ml-2">Update</Button>
+              {risk.imagePath && (
+                <div style={{ marginBottom: '10px' }}>
+                  <img src={`/images/${risk.imagePath}`} alt="Risk" style={{ maxWidth: '100%' }} />
+                </div>
               )}
+              <Button variant="danger" onClick={() => deleteRisk(risk.id)}>Delete</Button>
+              <Button variant="primary" onClick={() => handleUpdateClick(risk)} className="ml-2">Update</Button>
             </div>
           </Col>
         ))}
       </Row>
+      {editingRisk && (
+        <div className="mt-4">
+          <h2>Update Risk</h2>
+          <form onSubmit={handleRiskUpdate}>
+            <label>Risk Name:</label>
+            <input
+              type="text"
+              value={riskName}
+              onChange={(e) => setRiskName(e.target.value)}
+              required
+            />
+            <label>Risk Image:</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setRiskImage(e.target.files[0])}
+            />
+            <br />
+            <label>Risk Details:</label>
+            <JoditEditor
+              ref={editor}
+              value={riskDetails}
+              config={config}
+              tabIndex={1}
+              onBlur={(newContent) => setRiskDetails(newContent)}
+              onChange={() => {}}
+              placeholder="Enter detailed risk information..."
+            />
+            <button type="submit" className="btn btn-success mt-2">Update Risk</button>
+            <button type="button" onClick={handleCancelUpdate} className="btn btn-secondary mt-2 ml-2">Cancel</button>
+          </form>
+        </div>
+      )}
       <div className="text-center my-4">
         <Link to={`/industry/${id}/addRisk`}>
           <Button variant="success">Add New Risk</Button>

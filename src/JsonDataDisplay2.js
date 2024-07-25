@@ -27,7 +27,8 @@ const App2 = () => {
   const addIndustry = async () => {
     const formData = new FormData();
     formData.append('name', name);
-    formData.append('description', description);
+    formData.append('descriptionHtml', description); // Adjusted to match backend field name
+
     if (image) {
       formData.append('image', image);
     }
@@ -38,6 +39,7 @@ const App2 = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
+
       const newIndustry = response.data;
       setIndustries([...industries, newIndustry]);
       setName('');
@@ -67,7 +69,8 @@ const App2 = () => {
   const updateIndustry = async () => {
     const formData = new FormData();
     formData.append('name', name);
-    formData.append('description', description);
+    formData.append('descriptionHtml', description); // Adjusted to match backend field name
+
     if (image) {
       formData.append('image', image);
     }
@@ -78,6 +81,7 @@ const App2 = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
+
       fetchIndustries();
       setEditingIndustry(null);
       setName('');
@@ -103,9 +107,8 @@ const App2 = () => {
     <div className="container">
       <h1>Industry Manager</h1>
       <div className="form-container">
-        <textarea
+        <input
           type="text"
-          style={{height:'60px'}}
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -151,7 +154,6 @@ const App2 = () => {
             <div className="button-group">
               <button onClick={() => deleteIndustry(industry.id)}>Delete</button>
               <button onClick={() => startEditIndustry(industry)}>Edit</button>
-              {/* Remove the button for adding risk */}
             </div>
           </li>
         ))}
