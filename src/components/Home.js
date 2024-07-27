@@ -5,7 +5,7 @@ import axios from 'axios';
 import Carousels1 from '../Parts/Carousels';
 import '../App.css'
 import Userinterface from '../userinterface'
-
+import AboutUs from '../AboutUs';
 
 const Home = () => {
  
@@ -16,7 +16,7 @@ const Home = () => {
 
 <Userinterface/>
 
-    
+    <AboutUs/>
     </div>
   );
 };

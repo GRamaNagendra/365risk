@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -9,28 +9,24 @@ import './Footer.css';  // Custom CSS for Footer styles
 function Footer() {
     return (
         <footer className="footer-custom">
-            <Container>
+            <Container className="con">
                 <Row>
-                    <Col md={3} className="footer-section">
+                    <Col xl={3} md={6} sm={12} xs={12} className="footer-section">
                         <h5>About Us</h5>
                         <p>Learn more about our company, mission, and values.</p>
                         <Link to="/about">Read more</Link>
                     </Col>
-                    <Col md={3} className="footer-section">
+                    <Col xl={3} md={6} sm={12} xs={12} className="footer-section">
                         <h5>Contact Us</h5>
                         <ul className="list-unstyled">
-                            <li>
-                                <FontAwesomeIcon icon={faPhone} /> (123) 456-7890
-                            </li>
-                            <li>
-                                <FontAwesomeIcon icon={faEnvelope} /> info@company.com
-                            </li>
-                            <li>
-                                <FontAwesomeIcon icon={faMapMarkerAlt} /> 1234 Street Name, City, Country
-                            </li>
+                            <li><Link><FontAwesomeIcon icon={faPhone} /> (123) 456-7890</Link></li>
+                            <li><Link to="/terms"><FontAwesomeIcon icon={faEnvelope} /> info@company.com</Link></li>
+                            <li><Link to="/contact">Contact</Link></li>
+                            <li><Link to="/faq"><FontAwesomeIcon icon={faMapMarkerAlt} /> 1234 Street Name, City, Country</Link></li>
                         </ul>
+                        
                     </Col>
-                    <Col md={3} className="footer-section">
+                    <Col xl={3} md={6} sm={12} xs={12} className="footer-section">
                         <h5>Quick Links</h5>
                         <ul className="list-unstyled">
                             <li><Link to="/privacy">Privacy Policy</Link></li>
@@ -39,7 +35,7 @@ function Footer() {
                             <li><Link to="/faq">FAQ</Link></li>
                         </ul>
                     </Col>
-                    <Col md={3} className="footer-section">
+                    <Col xl={3} md={6} sm={12} xs={12} className="footer-section">
                         <h5>Newsletter Signup</h5>
                         <Form>
                             <Form.Group controlId="formBasicEmail">

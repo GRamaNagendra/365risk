@@ -24,33 +24,80 @@ const RiskDetails = () => {
   }
 
   return (
-    <div style={{ margin: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '4px', backgroundColor: '#f9f9f9' }}>
-      <h1>{risk.riskName}</h1>
-
-      <div style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ddd', borderRadius: '4px', backgroundColor: '#fff' }}>
-        <h2 style={{ marginTop: '0' }}>Description</h2>
-        <iframe 
-          src={`https://fantastic-halibut-6jqrr9v54q7f4jww-8080.app.github.dev/html/${risk.riskName}.html`} 
-          style={{ width: '100%', height: '400px', border: 'none' }}
-          title="Risk Description"
-        />
-      </div>
+    <div className="risk-details-container" style={styles.container}>
+      <h1 style={styles.title}>{risk.riskName}</h1>
 
       {risk.imagePath && (
-        <div style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ddd', borderRadius: '4px', backgroundColor: '#fff' }}>
-          <h2 style={{ marginTop: '0' }}>Image</h2>
+        <div style={styles.imageContainer}>
+         
           <img 
             src={`https://fantastic-halibut-6jqrr9v54q7f4jww-8080.app.github.dev/${risk.imagePath}`} 
             alt={risk.riskName} 
-            style={{ width: '100%', maxWidth: '600px', height: 'auto' }}
+            style={styles.image}
           />
         </div>
       )}
 
-     
+      <div style={styles.descriptionContainer}>
+      
+        <iframe 
+          src={`https://fantastic-halibut-6jqrr9v54q7f4jww-8080.app.github.dev/html/${risk.riskName}.html`} 
+          style={styles.iframe}
+          title="Risk Description"
+        />
       </div>
-   
+    </div>
   );
+};
+
+const styles = {
+  container: {
+    margin: '20px auto',
+    padding: '20px',
+    border: '1px solid #ccc',
+    borderRadius: '8px',
+    backgroundColor: '#f0f8ff',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    fontFamily: 'Arial, sans-serif',
+    maxWidth: '100%',
+  },
+  title: {
+    textAlign: 'center',
+    color: '#333',
+    fontSize: '2.5em',
+    fontWeight: '700',
+    marginBottom: '20px',
+  },
+  sectionTitle: {
+    color: '#555',
+    fontSize: '1.5em',
+    fontWeight: '600',
+    marginTop: '0',
+  },
+
+  image: {
+    width: '100%',
+    maxWidth: '900px',
+    height: '400px',
+    borderRadius: '4px',
+    display: 'block',
+    margin: '0 auto',
+  },
+  descriptionContainer: {
+    marginBottom: '20px',
+    padding: '15px',
+    border: '1px solid #ddd',
+    borderRadius: '8px',
+    backgroundColor: '#fff',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+  },
+  iframe: {
+    width: '100%',
+    height: '400px',
+    border: 'none',
+    display: 'block',
+    margin: '4% auto',
+  }
 };
 
 export default RiskDetails;
