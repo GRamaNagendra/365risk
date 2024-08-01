@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/365risk/static/css/main.418772a5.css",
-    "main.js": "/365risk/static/js/main.577ba318.js",
+    "main.css": "/365risk/static/css/main.ebf3ebb8.css",
+    "main.js": "/365risk/static/js/main.d293306e.js",
     "static/js/453.4a2e6b55.chunk.js": "/365risk/static/js/453.4a2e6b55.chunk.js",
     "static/media/risk2.jpeg": "/365risk/static/media/risk2.18285ac12e7a5cb6f87b.jpeg",
     "static/media/risk3.webp": "/365risk/static/media/risk3.149fa72473324914e7f9.webp",
     "static/media/image copy 2.png": "/365risk/static/media/image copy 2.fb1a701f3f4f3488538c.png",
     "static/media/risk1.avif": "/365risk/static/media/risk1.62d008cc4bc6a6188f06.avif",
     "index.html": "/365risk/index.html",
-    "main.418772a5.css.map": "/365risk/static/css/main.418772a5.css.map",
-    "main.577ba318.js.map": "/365risk/static/js/main.577ba318.js.map",
+    "main.ebf3ebb8.css.map": "/365risk/static/css/main.ebf3ebb8.css.map",
+    "main.d293306e.js.map": "/365risk/static/js/main.d293306e.js.map",
     "453.4a2e6b55.chunk.js.map": "/365risk/static/js/453.4a2e6b55.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.418772a5.css",
-    "static/js/main.577ba318.js"
+    "static/css/main.ebf3ebb8.css",
+    "static/js/main.d293306e.js"
   ]
 }
