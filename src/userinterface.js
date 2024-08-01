@@ -5,6 +5,29 @@ import './Userinterface.css'; // Import the CSS file for styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Import the search icon
 
+const HtmlContent = ({ industryName }) => {
+  const [content, setContent] = useState('');
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch(`https://redesigned-robot-4jgp7rv5jwq93546-8080.app.github.dev/html/${industryName}.html`);
+
+
+       
+        const text = await response.text();
+        setContent(text);
+      } catch (error) {
+        console.error('Error fetching HTML content:', error);
+      }
+    };
+
+    fetchContent();
+  }, [industryName]);
+
+  return <div dangerouslySetInnerHTML={{ __html: content }} />;
+};
+
 const Userinterface = () => {
   const [industries, setIndustries] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -25,7 +48,7 @@ const Userinterface = () => {
   };
 
   const filteredIndustries = industries.filter(industry =>
-    industry.name.toLowerCase().includes(searchQuery.toLowerCase())
+    industry.name.includes(searchQuery) // Removed lowercase conversion
   );
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -68,7 +91,8 @@ const Userinterface = () => {
             <Link to={`/uindustry/${industry.id}`} className="industry-link">
               <div className="industry-box">
                 <img
-                  src={`https://fantastic-halibut-6jqrr9v54q7f4jww-8080.app.github.dev/${industry.imagePath}`}
+                 src={`https://raw.githubusercontent.com/365risk/EnterValues/main/src/main/resources/images/${industry.imagePath}`} 
+          
                   alt={industry.name}
                   className="industry-image"
                 />
@@ -76,11 +100,7 @@ const Userinterface = () => {
                   {industry.name}
                 </h3>
                 <div className="industry-content">
-                  <iframe
-                    src={`https://fantastic-halibut-6jqrr9v54q7f4jww-8080.app.github.dev/html/${industry.name}.html`}
-                    className="industry-iframe"
-                    title="Industry Description"
-                  />
+                  <HtmlContent industryName={industry.name} />
                   <button className="show-risks-button">Show Risks</button>
                   <div className="tooltip">Detailed Information</div>
                 </div>

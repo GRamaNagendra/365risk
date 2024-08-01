@@ -84,19 +84,19 @@ const AboutUs = () => {
           <div style={styles.teamContainer}>
             <div style={styles.teamMember}>
               <div style={styles.teamMemberImage}></div>
-              <h3 style={styles.teamMemberName}>Jane Doe</h3>
+              <h3 style={styles.teamMemberName}>Admin 1</h3>
               <p style={styles.teamMemberRole}>Chief Executive Officer</p>
               <p style={styles.teamMemberBio}>Jane brings over 20 years of experience in risk management and strategic planning, leading our company to new heights.</p>
             </div>
             <div style={styles.teamMember}>
               <div style={styles.teamMemberImage}></div>
-              <h3 style={styles.teamMemberName}>John Smith</h3>
+              <h3 style={styles.teamMemberName}>Admin 2</h3>
               <p style={styles.teamMemberRole}>Chief Risk Officer</p>
               <p style={styles.teamMemberBio}>John is an expert in risk analysis and compliance, ensuring our solutions are robust and effective.</p>
             </div>
             <div style={styles.teamMember}>
               <div style={styles.teamMemberImage}></div>
-              <h3 style={styles.teamMemberName}>Emily Davis</h3>
+              <h3 style={styles.teamMemberName}>Admin 3</h3>
               <p style={styles.teamMemberRole}>Head of Innovation</p>
               <p style={styles.teamMemberBio}>Emily leads our innovation team, driving new developments and staying ahead of industry trends.</p>
             </div>
@@ -107,7 +107,7 @@ const AboutUs = () => {
           <p style={styles.sectionText}>If you have any questions or would like to learn more about our services, feel free to reach out to us:</p>
           <div style={styles.contactDetails}>
             <p><strong>Email:</strong> support@risk365risk.com</p>
-            <p><strong>Phone:</strong> +1 (800) 123-4567</p>
+            <p><strong>Phone:</strong> +91758493384</p>
             <p><strong>Address:</strong> 123 Risk Ave, Suite 100, Risk City, RC 12345</p>
           </div>
           <a href="/contact" style={styles.contactButton}>Get in Touch</a>

@@ -1,9 +1,7 @@
-// src/Notifications.js
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import api from '../api';
 
-// Enhanced CSS styling for the Notifications component
 const styles = {
     container: {
         padding: '20px',
@@ -33,7 +31,6 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         gap: '20px',
-        paddingBottom: '70px',
     },
     notification: {
         padding: '20px',
@@ -47,8 +44,6 @@ const styles = {
         cursor: 'pointer',
         overflow: 'hidden',
         boxShadow: '0 6px 12px rgba(0, 0, 0, 0.1)',
-        margin: '0 20px',
-        borderLeft: '6px solid transparent',
     },
     notificationHover: {
         backgroundColor: '#eaf2f7',
@@ -176,7 +171,6 @@ const styles = {
     },
 };
 
-// Base URL for images
 const baseURL = 'https://fantastic-halibut-6jqrr9v54q7f4jww-8080.app.github.dev/';
 
 const Notifications = () => {
@@ -186,7 +180,6 @@ const Notifications = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Fetch industries data
     const fetchIndustries = async () => {
         try {
             const response = await api.get('/api/industries');
@@ -202,7 +195,6 @@ const Notifications = () => {
         fetchIndustries();
     }, []);
 
-    // Handle pagination
     const indexOfLastIndustry = currentPage * itemsPerPage;
     const indexOfFirstIndustry = indexOfLastIndustry - itemsPerPage;
     const currentIndustries = industries.slice(indexOfFirstIndustry, indexOfLastIndustry);
@@ -211,85 +203,84 @@ const Notifications = () => {
 
     return (
         <div style={styles.container}>
-            <h2 style={styles.heading}>Latest Notifications</h2>
+            <h2 style={styles.heading}>Notifications</h2>
             {loading && <div style={styles.loadingSpinner}></div>}
             {error && <div style={styles.noData}>{error}</div>}
             {!loading && !error && (
-                <>
-                    <div style={styles.notificationContainer}>
-                        {currentIndustries.length > 0 ? (
-                            currentIndustries.map((industry, index) => (
-                                <div
-                                    key={industry.id}
-                                    style={{
-                                        ...styles.notification,
-                                        ...(index === 0 ? styles.notificationLast : {}),
-                                    }}
-                                    className="notification-item"
-                                    onMouseEnter={e => e.currentTarget.style.backgroundColor = '#eaf2f7'}
-                                    onMouseLeave={e => e.currentTarget.style.backgroundColor = '#ffffff'}
-                                >
-                                    {industry.imagePath && (
-                                        <img
-                                            src={`${baseURL}${industry.imagePath}`}
-                                            alt={`Image for ${industry.name}`}
-                                            style={{
-                                                ...styles.image,
-                                                ...(index === 0 ? styles.imageHover : {}),
-                                            }}
-                                            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                                            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                                        />
-                                    )}
-                                    <div style={styles.message}>
-                                        <div style={styles.title}>
-                                            {index === 0 ? 'New Industry Added:' : 'Previous Industry:'}
-                                        </div>
-                                        <p style={styles.description}>{industry.name}</p>
-                                    </div>
-                                </div>
-                            ))
-                        ) : (
-                            <div style={styles.noData}>No notifications available.</div>
-                        )}
-                    </div>
-                    <div style={styles.pagination}>
-                        <button
-                            style={{
-                                ...styles.pageButton,
-                                ...(currentPage === 1 ? styles.pageButtonDisabled : {}),
-                            }}
-                            onClick={() => currentPage > 1 && paginate(currentPage - 1)}
-                            disabled={currentPage === 1}
-                        >
-                            Previous
-                        </button>
-                        {[...Array(Math.ceil(industries.length / itemsPerPage)).keys()].map(number => (
-                            <button
-                                key={number + 1}
+                <div style={styles.notificationContainer}>
+                    {currentIndustries.length > 0 ? (
+                        currentIndustries.map((industry) => (
+                            <div
+                                key={industry.id}
                                 style={{
-                                    ...styles.pageButton,
-                                    ...(currentPage === number + 1 ? styles.pageButtonActive : {}),
+                                    ...styles.notification,
+                                    ...(industries[0].id === industry.id ? styles.notificationLast : {}),
                                 }}
-                                onClick={() => paginate(number + 1)}
                             >
-                                {number + 1}
-                            </button>
-                        ))}
+                                {industry.imagePath && (
+                                    <img
+                                        src={`${baseURL}${industry.imagePath}`}
+                                        alt={`Image for ${industry.name}`}
+                                        style={styles.image}
+                                    />
+                                )}
+                                <div style={styles.message}>
+                                    <div style={styles.title}>{industry.name}</div>
+                                    <p style={styles.description}>{industry.description}</p>
+                                    <Link
+                                        to={`/uindustry/${industry.id}`}
+                                        style={styles.riskLink}
+                                    >
+                                        View Details
+                                    </Link>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <div style={styles.noData}>No notifications available</div>
+                    )}
+                </div>
+            )}
+            <div style={styles.pagination}>
+                <button
+                    style={{
+                        ...styles.pageButton,
+                        ...(currentPage === 1 ? styles.pageButtonDisabled : {}),
+                    }}
+                    onClick={() => currentPage > 1 && paginate(currentPage - 1)}
+                    disabled={currentPage === 1}
+                >
+                    Prev
+                </button>
+                {Array.from(
+                    { length: Math.ceil(industries.length / itemsPerPage) },
+                    (_, index) => (
                         <button
+                            key={index + 1}
                             style={{
                                 ...styles.pageButton,
-                                ...(currentPage === Math.ceil(industries.length / itemsPerPage) ? styles.pageButtonDisabled : {}),
+                                ...(currentPage === index + 1 ? styles.pageButtonActive : {}),
                             }}
-                            onClick={() => currentPage < Math.ceil(industries.length / itemsPerPage) && paginate(currentPage + 1)}
-                            disabled={currentPage === Math.ceil(industries.length / itemsPerPage)}
+                            onClick={() => paginate(index + 1)}
                         >
-                            Next
+                            {index + 1}
                         </button>
-                    </div>
-                </>
-            )}
-            <footer style={styles.footer}>Data provided by Industry API</footer>
+                    )
+                )}
+                <button
+                    style={{
+                        ...styles.pageButton,
+                        ...(currentPage === Math.ceil(industries.length / itemsPerPage)
+                            ? styles.pageButtonDisabled
+                            : {}),
+                    }}
+                    onClick={() => currentPage < Math.ceil(industries.length / itemsPerPage) && paginate(currentPage + 1)}
+                    disabled={currentPage === Math.ceil(industries.length / itemsPerPage)}
+                >
+                    Next
+                </button>
+            </div>
+            <div style={styles.footer}>Notification Page</div>
         </div>
     );
 };

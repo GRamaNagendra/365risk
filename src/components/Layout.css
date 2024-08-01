@@ -1,94 +1,113 @@
 /* Layout.css */
 
+/* Navbar styles */
 .navbar-custom {
-    background-color: #007bff; /* Navbar background color */
-   
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
-   
-  }
-  
-  
+  background-color: #007bff; /* Navbar background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+  display: flex;
+  align-items: center; /* Align items vertically in the navbar */
+}
+
+.navbar-nav {
+  margin-left: auto; /* Push menu items to the right */
+  display: flex; /* Ensure horizontal layout */
+  flex-direction: row; /* Arrange items horizontally */
+  align-items: center; /* Center items vertically */
+}
+
+/* Nav link styles */
+.nav-link-custom {
+  color: #ffffff !important; /* Navbar link text color */
+  font-weight: bold; /* Optional: Adjust font weight */
+  font-size: 21px;
+  transition: color 0.3s; /* Smooth transition for color change */
+  padding-right: 15px;
+}
+
+.nav-link-custom:hover {
+  color: #f8f9fa; /* Navbar link text color on hover */
+  text-decoration: none; /* Optional: Remove underline on hover */
+}
+
+/* Navbar toggler styles */
+.navbar-toggler {
+  border: none; /* Remove border from toggle button */
+  background-color: transparent; /* Set background color to transparent */
+  outline: none; /* Remove outline */
+}
+
+.navbar-toggler-icon {
+  color: #ffffff; /* Color of toggle icon */
+  font-size: 24px; /* Adjust font size */
+}
+
+/* Dropdown styles */
+.dropdown-toggle {
+  color: #ffffff !important; /* Color of dropdown toggle text */
+  font-weight: bold; /* Optional: Adjust font weight */
+  margin-left: 10px; /* Optional: Adjust spacing */
+}
+
+.dropdown-toggle::after {
+  display: none; /* Hide default caret */
+}
+
+.dropdown-toggle .svg-inline--fa {
+  margin-left: 5px; /* Adjust spacing between icon and text */
+  color: #ffffff; /* Color of dropdown icon */
+}
+
+.dropdown-menu {
+  background-color: #007bff; /* Dropdown menu background color */
+}
+
+.dropdown-item {
+  color: #ffffff !important; /* Dropdown item text color */
+  font-weight: bold; /* Optional: Adjust font weight */
+}
+
+.dropdown-item:hover {
+  background-color: #0056b3; /* Darker background on hover */
+}
+
+/* Icon color */
+.iconcolor {
+  color: orange !important;
+}
+
+/* Logo styles */
+.logo {
+  width: 210px;
+  height: 90px;
+  margin-right: 20px; /* Adjust margin to remove excess space */
+}
+
+/* Container styles */
+.navbar-custom .container {
+  width: 100%;
+  max-width: 1200px; /* Set a max-width for large screens */
+}
+
+/* Responsive design */
+@media (max-width: 991px) { /* Adjust for medium to small screens */
   .navbar-nav {
-    margin-left: auto; /* Push menu items to the right */
-   
+      flex-direction: column; /* Stack items vertically */
+      margin: 0; /* Remove margin */
+      align-items: flex-start; /* Align items to the start */
   }
-  
+
+  .logo {
+      margin-right: 0; /* Remove margin for small screens */
+      margin-bottom: 10px; /* Add bottom margin for spacing */
+  }
+}
+
+@media (max-width: 576px) { /* Adjust for small screens */
   .nav-link-custom {
-    color: #ffffff !important; /* Navbar link text color */
-    font-weight: bold; /* Optional: Adjust font weight */
-    font-size: 21px;
-    transition: color 0.3s; /* Smooth transition for color change */
-   
-    width:max-content;
-    padding-right: 15px;
-   
-   
+      font-size: 18px; /* Adjust font size */
   }
-  
-  .nav-link-custom:hover {
-    color: #f8f9fa; /* Navbar link text color on hover */
-    text-decoration: none; /* Optional: Remove underline on hover */
-  }
-  
-  .navbar-toggler {
-    border: none; /* Remove border from toggle button */
-    background-color: transparent; /* Set background color to transparent */
-    outline: none; /* Remove outline */
-  }
-  
+
   .navbar-toggler-icon {
-    color: #ffffff; /* Color of toggle icon */
-    font-size: 24px; /* Adjust font size */
+      font-size: 20px; /* Adjust toggle icon size */
   }
-  
-  .dropdown-toggle {
-    color: #ffffff !important; /* Color of dropdown toggle text */
-    font-weight: bold; /* Optional: Adjust font weight */
-    margin-left: 10px; /* Optional: Adjust spacing */
-  }
-  
-  .dropdown-toggle::after {
-    display: none; /* Hide default caret */
-  }
-  
-  .dropdown-toggle .svg-inline--fa {
-    margin-left: 5px; /* Adjust spacing between icon and text */
-    color: #ffffff; /* Color of dropdown icon */
-  }
-  
-  .dropdown-menu {
-    background-color: #007bff; /* Dropdown menu background color */
-    
-  }
-  
-  .dropdown-item {
-    color: #ffffff !important; /* Dropdown item text color */
-    font-weight: bold; /* Optional: Adjust font weight */
-
-  }
-  
-  .dropdown-item:hover {
-    background-color: #0056b3; /* Darker background on hover */
-  }
-  
-  .iconcolor{
-    color:orange !important
-  }
-  .navbar-nav {
-    margin: 0 auto; /* Center align the nav items */
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    width: 100%; /* Make sure the navbar takes full width */
-  }
-  
-  .logo{
-    width:210px;
-    height:90px;
-    margin-right:200px
-  }
-
-  .navbar-custom .container{
-    width: 100%;
-   max-width: 100%;
-  }
+}

@@ -16,7 +16,7 @@ const IndustryDetails = () => {
 
   useEffect(() => {
     fetchIndustry();
-  }, []);
+  }, [id]);
 
   const fetchIndustry = async () => {
     try {
@@ -30,7 +30,7 @@ const IndustryDetails = () => {
   const deleteRisk = async (riskId) => {
     try {
       await api.delete(`/api/industries/${id}/risks/${riskId}`);
-      fetchIndustry();
+      fetchIndustry(); // Refresh the industry data
     } catch (error) {
       console.error('Error deleting risk:', error);
     }
@@ -64,11 +64,8 @@ const IndustryDetails = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
-      setEditingRisk(null);
-      setRiskName('');
-      setRiskDetails('');
-      setRiskImage(null);
-      fetchIndustry();
+      handleCancelUpdate(); // Clear the form after update
+      fetchIndustry(); // Refresh the industry data
     } catch (error) {
       console.error('Error updating risk:', error);
     }
@@ -147,8 +144,8 @@ const IndustryDetails = () => {
               onChange={() => {}}
               placeholder="Enter detailed risk information..."
             />
-            <button type="submit" className="btn btn-success mt-2">Update Risk</button>
-            <button type="button" onClick={handleCancelUpdate} className="btn btn-secondary mt-2 ml-2">Cancel</button>
+            <Button type="submit" variant="success" className="mt-2">Update Risk</Button>
+            <Button type="button" onClick={handleCancelUpdate} variant="secondary" className="mt-2 ml-2">Cancel</Button>
           </form>
         </div>
       )}

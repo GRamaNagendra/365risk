@@ -2,13 +2,33 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../api'; // Adjust the path if needed
 
+const HtmlContent = ({ riskName }) => {
+  const [content, setContent] = useState('');
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch(`https://raw.githubusercontent.com/365risk/EnterValues/main/src/main/resources/html/${riskName}.html`);
+        const text = await response.text();
+        setContent(text);
+      } catch (error) {
+        console.error('Error fetching HTML content:', error);
+      }
+    };
+
+    fetchContent();
+  }, [riskName]);
+
+  return <div dangerouslySetInnerHTML={{ __html: content }} />;
+};
+
 const RiskDetails = () => {
   const { id, riskId } = useParams();
   const [risk, setRisk] = useState(null);
 
   useEffect(() => {
     fetchRisk();
-  }, []);
+  }, [id, riskId]);
 
   const fetchRisk = async () => {
     try {
@@ -29,9 +49,8 @@ const RiskDetails = () => {
 
       {risk.imagePath && (
         <div style={styles.imageContainer}>
-         
           <img 
-            src={`https://fantastic-halibut-6jqrr9v54q7f4jww-8080.app.github.dev/${risk.imagePath}`} 
+            src={`https://raw.githubusercontent.com/365risk/EnterValues/main/src/main/resources/images/${risk.imagePath}`} 
             alt={risk.riskName} 
             style={styles.image}
           />
@@ -39,12 +58,7 @@ const RiskDetails = () => {
       )}
 
       <div style={styles.descriptionContainer}>
-      
-        <iframe 
-          src={`https://fantastic-halibut-6jqrr9v54q7f4jww-8080.app.github.dev/html/${risk.riskName}.html`} 
-          style={styles.iframe}
-          title="Risk Description"
-        />
+        <HtmlContent riskName={risk.riskName} />
       </div>
     </div>
   );
@@ -68,13 +82,10 @@ const styles = {
     fontWeight: '700',
     marginBottom: '20px',
   },
-  sectionTitle: {
-    color: '#555',
-    fontSize: '1.5em',
-    fontWeight: '600',
-    marginTop: '0',
+  imageContainer: {
+    textAlign: 'center',
+    marginBottom: '20px',
   },
-
   image: {
     width: '100%',
     maxWidth: '900px',
@@ -91,13 +102,6 @@ const styles = {
     backgroundColor: '#fff',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   },
-  iframe: {
-    width: '100%',
-    height: '400px',
-    border: 'none',
-    display: 'block',
-    margin: '4% auto',
-  }
 };
 
 export default RiskDetails;
